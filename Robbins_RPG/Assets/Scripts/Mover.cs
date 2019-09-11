@@ -9,10 +9,10 @@ public class Mover : MonoBehaviour
 
     void Update()
     {
-       /* if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             MoveToCursor();
-        }*/
+        }
         UpdateAnimator();
     }
 
@@ -23,15 +23,9 @@ public class Mover : MonoBehaviour
         bool hashit = Physics.Raycast(ray, out hit);
         if (hashit)
         {
-            MoveTo(hit.point);
+            GetComponent<NavMeshAgent>().destination = hit.point;
         }
     }
-
-    public void MoveTo(Vector3 destination)
-    {
-        GetComponent<NavMeshAgent>().destination = destination;
-    }
-
     private void UpdateAnimator()
     {
         Vector3 velocity = GetComponent<NavMeshAgent>().velocity;
